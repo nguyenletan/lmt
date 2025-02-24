@@ -1,4 +1,15 @@
-module.exports = {
+/** @type {import('next').NextConfig} */
+const config = {
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
+  },
   images: {
     remotePatterns: [
       {
@@ -7,15 +18,6 @@ module.exports = {
         port: "",
       },
     ],
-  },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ["@svgr/webpack"],
-    });
-
-    return config;
   },
   async headers() {
     // these are also defined in the root layout since github pages doesn't support headers
@@ -45,3 +47,5 @@ module.exports = {
     ];
   },
 };
+
+module.exports = config;

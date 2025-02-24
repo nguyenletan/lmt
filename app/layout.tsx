@@ -1,6 +1,6 @@
 import React from "react";
 import { Metadata } from "next";
-import { Inter as FontSans, Lato, Nunito } from "next/font/google";
+import { Inter as FontSans, Lato, Noto_Sans } from "next/font/google";
 import { cn } from "@/lib/utils";
 import client from "@/tina/__generated__/client";
 
@@ -11,9 +11,9 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-const nunito = Nunito({
+const noto = Noto_Sans({
   subsets: ["latin"],
-  variable: "--font-nunito",
+  variable: "--font-noto",
 });
 
 const lato = Lato({
@@ -39,8 +39,8 @@ export default async function RootLayout({
 
   const selectFont = (fontName: string) => {
     switch (fontName) {
-      case "nunito":
-        return `font-nunito ${nunito.variable}`;
+      case "noto":
+        return `font-noto ${noto.variable}`;
       case "lato":
         return `font-lato ${lato.variable}`;
       case "sans":
